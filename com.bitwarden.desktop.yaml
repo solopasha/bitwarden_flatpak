@@ -18,6 +18,7 @@ finish-args:
   - --talk-name=org.kde.StatusNotifierWatcher
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.secrets
+  - --talk-name=org.freedesktop.portal.Background
   - --talk-name=com.canonical.AppMenu.Registrar
   - --system-talk-name=org.freedesktop.login1
   - --filesystem=xdg-download
@@ -38,8 +39,7 @@ modules:
         npm_config_no_save: 'true'
         npm_config_cache: /run/build/bitwarden-desktop/flatpak-node/npm-cache
         npm_config_loglevel: 'verbose'
-        # https://stackoverflow.com/questions/25146976/can-i-get-npm-gyp-to-use-ccache
-        CXX: ccache g++
+        npm_config_build_from_source: 'true'
         ELECTRON_SKIP_BINARY_DOWNLOAD: 'true'
 
         CARGO_HOME: /run/build/bitwarden-desktop/cargo
@@ -100,7 +100,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/bitwarden/clients.git
-        tag: desktop-v2023.10.1
+        tag: desktop-v2023.12.0
         x-checker-data:
           type: anitya
           project-id: 179174
